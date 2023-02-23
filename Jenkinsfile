@@ -76,8 +76,9 @@ pipeline {
                     	echo response
 			def jsonSlurper = new groovy.json.JsonSlurper()
 			def object = jsonSlurper.parseText(response)
-                        echo object.detail
-			echo object.status
+			echo object.result
+                        echo object.result.detail
+			echo object.result.status
                     }
                 }
          }
