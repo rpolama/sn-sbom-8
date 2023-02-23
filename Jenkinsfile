@@ -74,6 +74,10 @@ pipeline {
 					echo "HTTP response status code: $code"
 					if (code == 200) {
                     	echo response
+			def jsonSlurper = new JsonSlurper()
+			def object = jsonSlurper.parseText(response)
+                        echo object.detail
+			echo object.status
                     }
                 }
          }
