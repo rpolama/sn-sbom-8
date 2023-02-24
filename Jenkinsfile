@@ -1,4 +1,5 @@
 def artifactname = "artifact_devops_${env.BUILD_NUMBER}.jar"
+def packageartifactname = "artifact_devops_${env.BUILD_NUMBER}.jar"
 pipeline {
    agent any
    tools {
@@ -100,7 +101,7 @@ pipeline {
               {"artifacts": 
                [
                   {
-                     "name": "${artifactname}",
+                     "name": "${packageartifactname}",
                      "repositoryName": "DevOpsSbom",
                      "taskExecutionNumber":"${env.BUILD_NUMBER}",
                      "branchName": "main"
@@ -109,12 +110,12 @@ pipeline {
                 }""")
          }
       }
-//       stage("Deploy") {
-//              steps{
-//                   snDevOpsChange()
-//                   echo ">> Deploy in prod"
-//               }
-//       }      
+      stage("Deploy") {
+             steps{
+                  snDevOpsChange()
+                  echo ">> Deploy in prod"
+              }
+      }      
       
   }
 }
