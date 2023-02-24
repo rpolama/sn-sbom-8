@@ -69,7 +69,7 @@ pipeline {
                     final def (String response, int code) = sh(script: "curl --location --request POST -w '\\n%{response_code}' 'https://devopssbom.service-now.com/api/sn_sbom/parser_api/parse' \
 						--header 'Content-Type: application/json' \
 						--header 'Authorization: Basic YWRtaW46U2VydmljZW5vdzEyMyE=' \
-						--data-binary '@/var/jenkins_home/workspace/sn-sbom-pipeline/target/bom.json'", returnStdout: true).trim()
+						--data-binary '@/var/jenkins_home/workspace/jenkins8-sn-sbom-pipeline/target/bom.json'", returnStdout: true).trim()
 						.tokenize("\n")
 
 					echo "HTTP response status code: $code"
