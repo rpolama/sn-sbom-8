@@ -103,6 +103,7 @@ pipeline {
                   {
                      "name": "${packageartifactname}",
                      "repositoryName": "DevOpsSbom",
+		     "version":"0.${env.BUILD_NUMBER}.0",
                      "taskExecutionNumber":"${env.BUILD_NUMBER}",
                      "branchName": "main"
                    }
