@@ -67,9 +67,9 @@ pipeline {
          steps {
            script {
 
-                    final def (String response, int code) = sh(script: "curl --location --request POST -w '\\n%{response_code}' 'https://devopssbom.service-now.com/api/sn_sbom/parser_api/parse' \
+                    final def (String response, int code) = sh(script: "curl --location --request POST -w '\\n%{response_code}' 'https://sunildevopstokyo1.service-now.com/api/sn_sbom/parser_api/parse' \
 						--header 'Content-Type: application/json' \
-						--header 'Authorization: Basic YWRtaW46U2VydmljZW5vdzEyMyE=' \
+						--header 'Authorization: Basic YWRtaW46RGV2T3BzMSE=' \
 						--data-binary '@/var/jenkins_home/workspace/jenkins8-sn-sbom-pipeline/target/bom.json'", returnStdout: true).trim()
 						.tokenize("\n")
 
