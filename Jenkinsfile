@@ -67,9 +67,9 @@ pipeline {
          steps {
            script {
 
-                    final def (String response, int code) = sh(script: "curl --location --request POST -w '\\n%{response_code}' 'https://sunildevopstokyo1.service-now.com/api/sn_sbom/parser_api/parse' \
+                    final def (String response, int code) = sh(script: "curl --location --request POST -w '\\n%{response_code}' 'https://empkgtokyo.service-now.com/api/sbom/core/upload' \
 						--header 'Content-Type: application/json' \
-						--header 'Authorization: Basic YWRtaW46RGV2T3BzMSE=' \
+						--header 'Authorization: Basic YWJlbC50dXRlcjpEZXZPcHMxIQ==' \
 						--data-binary '@/var/jenkins_home/workspace/jenkins8-sn-sbom-pipeline/target/bom.json'", returnStdout: true).trim()
 						.tokenize("\n")
 
@@ -86,34 +86,34 @@ pipeline {
                     }
                 }
 	      echo "Creating artifact in service now"
-              snDevOpsArtifact(artifactsPayload:"""
-               {"artifacts": 
-                  [
-                     {
-                        "name": "${artifactname}",
-                        "version":"0.${env.BUILD_NUMBER}.0",
-                        "semanticVersion": "0.${env.BUILD_NUMBER}.0",
-                        "repositoryName": "DevOpsSbom"
-                       }
-                    ]
-                 }""")
-              snDevOpsPackage(name: "DevOpsSbom-package", artifactsPayload: """
-              {"artifacts": 
-               [
-                  {
-                     "name": "${packageartifactname}",
-                     "repositoryName": "DevOpsSbom",
-		     "version":"0.${env.BUILD_NUMBER}.0",
-                     "taskExecutionNumber":"${env.BUILD_NUMBER}",
-                     "branchName": "main"
-                   }
-                 ]
-                }""")
+              //snDevOpsArtifact(artifactsPayload:"""
+               //{"artifacts": 
+                 // [
+                   //  {
+                     //   "name": "${artifactname}",
+                       // "version":"0.${env.BUILD_NUMBER}.0",
+                     //   "semanticVersion": "0.${env.BUILD_NUMBER}.0",
+                       // "repositoryName": "DevOpsSbom"
+                   //    }
+                   // ]
+//                 }""")
+  //            snDevOpsPackage(name: "DevOpsSbom-package", artifactsPayload: """
+    //          {"artifacts": 
+      //         [
+        //          {
+          //           "name": "${packageartifactname}",
+            //         "repositoryName": "DevOpsSbom",
+		//     "version":"0.${env.BUILD_NUMBER}.0",
+          //           "taskExecutionNumber":"${env.BUILD_NUMBER}",
+            //         "branchName": "main"
+              //     }
+            //     ]
+            //    }""")
          }
       }
       stage("Deploy") {
              steps{
-                  snDevOpsChange()
+                  //snDevOpsChange()
                   echo ">> Deploy in prod"
               }
       }      
