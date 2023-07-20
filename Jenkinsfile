@@ -84,8 +84,8 @@ pipeline {
 			 
 			filename = args[0]
 			 
-			def jsonSlurper = new JsonSlurper()
-			data = jsonSlurper.parse(new File("@/var/jenkins_home/workspace/Mohan-SBOM/target/bom.json"))
+			def jsonSlurper1 = new JsonSlurper()
+			data = jsonSlurper1.parse(new File("@/var/jenkins_home/workspace/Mohan-SBOM/target/bom.json"))
 			 
 			println(data)
 					if (code == 200) {
