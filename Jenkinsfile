@@ -1,3 +1,4 @@
+import groovy.json.JsonSlurper
 def artifactname = "artifact_devops_${env.BUILD_NUMBER}.jar"
 def packageartifactname = "artifact_devops_${env.BUILD_NUMBER}.jar"
 pipeline {
@@ -74,8 +75,19 @@ pipeline {
 						.tokenize("\n")
 
 					echo "HTTP response status code: $code"
-			def json = readJSON file: '@/var/jenkins_home/workspace/Mohan-SBOM/target/bom.json'
-                    	echo "${json}"
+			
+ 
+			if (args.size() < 1) {
+			    println("Missing filename")
+			    System.exit(1)
+			}
+			 
+			filename = args[0]
+			 
+			def jsonSlurper = new JsonSlurper()
+			data = jsonSlurper.parse(new File("@/var/jenkins_home/workspace/Mohan-SBOM/target/bom.json"))
+			 
+			println(data)
 					if (code == 200) {
                     	echo response
 			def jsonSlurper = new groovy.json.JsonSlurper()
