@@ -74,6 +74,8 @@ pipeline {
 						.tokenize("\n")
 
 					echo "HTTP response status code: $code"
+			def json = readJSON file: '@/var/jenkins_home/workspace/Mohan-SBOM/target/bom.json'
+                    	echo "${json}"
 					if (code == 200) {
                     	echo response
 			def jsonSlurper = new groovy.json.JsonSlurper()
