@@ -78,9 +78,9 @@ pipeline {
  
 			def fileContent = new File('/var/jenkins_home/workspace/Mohan-SBOM/target/bom.json').text             
 
-def jsonSlurper = new groovy.json.JsonSlurper()             
+def jsonSlurper1 = new groovy.json.JsonSlurper()             
 
-def object = jsonSlurper.parseText(fileContent)             
+def object = jsonSlurper1.parseText(fileContent)             
 
 echo "${object}"
 			if (code == 200) {
