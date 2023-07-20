@@ -76,13 +76,7 @@ pipeline {
 					echo "HTTP response status code: $code"
 			
  
-			def fileContent = new File('/var/jenkins_home/workspace/Mohan-SBOM/target/bom.json').text             
-
-def jsonSlurper1 = new groovy.json.JsonSlurper()             
-
-def object1 = jsonSlurper1.parseText(fileContent)             
-
-echo "${object1}"
+			
 			if (code == 200) {
                     	echo response
 			def jsonSlurper = new groovy.json.JsonSlurper()
