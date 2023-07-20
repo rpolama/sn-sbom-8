@@ -80,9 +80,9 @@ pipeline {
 
 def jsonSlurper1 = new groovy.json.JsonSlurper()             
 
-def object = jsonSlurper1.parseText(fileContent)             
+def object1 = jsonSlurper1.parseText(fileContent)             
 
-echo "${object}"
+echo "${object1}"
 			if (code == 200) {
                     	echo response
 			def jsonSlurper = new groovy.json.JsonSlurper()
