@@ -28,14 +28,14 @@ pipeline {
         stage("Send SBOM to service now") {
             steps {
                 script {
-                    final def (String response, int code) = sh(script: "curl --location --request POST -w '\\n%{response_code}' 'https://empkgtokyo.service-now.com/api/sbom/core/upload' \
+                    final def (String response, String code) = sh(script: "curl --location --request POST -w '\\n%{response_code}' 'https://empkgtokyo.service-now.com/api/sbom/core/upload' \
 						--header 'Content-Type: application/json' \
 						--header 'Authorization: Basic YWJlbC50dXRlcjpEZXZPcHMxIQ==' \
 						--data-binary '@target/bom.json'", returnStdout: true).trim()
                     .tokenize("\n")
 
                     echo "HTTP response status code: $code"
-                    if (code == '200') {
+                    if (code == "200") {
                         echo response
                         def jsonSlurper = new groovy.json.JsonSlurper()
                         def object = jsonSlurper.parseText(response)
