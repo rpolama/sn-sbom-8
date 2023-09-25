@@ -36,12 +36,11 @@ pipeline {
 
                     echo "HTTP response status code: $code"
                     if (code == "200") {
-                        echo response
                         def jsonSlurper = new groovy.json.JsonSlurper()
                         def object = jsonSlurper.parseText(response)
-                        echo object.result.detail
-                        echo object.result.status
-                        echo object.result.sysid
+                        echo 'Response status: ' + object.result.status
+			echo 'Response message: ' + object.result.message
+                        echo 'Queue sys Id: ' + object.result.sysId
                     }
                 }
             }
