@@ -50,30 +50,6 @@ pipeline {
 			echo artifactname
                     }
                 }
-	      echo "Creating artifact in service now"
-              //snDevOpsArtifact(artifactsPayload:"""
-               //{"artifacts": 
-                 // [
-                   //  {
-                     //   "name": "${artifactname}",
-                       // "version":"0.${env.BUILD_NUMBER}.0",
-                     //   "semanticVersion": "0.${env.BUILD_NUMBER}.0",
-                       // "repositoryName": "DevOpsSbom"
-                   //    }
-                   // ]
-//                 }""")
-  //            snDevOpsPackage(name: "DevOpsSbom-package", artifactsPayload: """
-    //          {"artifacts": 
-      //         [
-        //          {
-          //           "name": "${packageartifactname}",
-            //         "repositoryName": "DevOpsSbom",
-		//     "version":"0.${env.BUILD_NUMBER}.0",
-          //           "taskExecutionNumber":"${env.BUILD_NUMBER}",
-            //         "branchName": "main"
-              //     }
-            //     ]
-            //    }""")
          }
       }
       stage("Deploy") {
