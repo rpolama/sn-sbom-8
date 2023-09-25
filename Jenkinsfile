@@ -31,7 +31,7 @@ pipeline {
                     final def (String response, int code) = sh(script: "curl --location --request POST -w '\\n%{response_code}' 'https://empkgtokyo.service-now.com/api/sbom/core/upload' \
 						--header 'Content-Type: application/json' \
 						--header 'Authorization: Basic YWJlbC50dXRlcjpEZXZPcHMxIQ==' \
-						--data-binary '@/var/jenkins_home/workspace/rpolama/target/bom.json'", returnStdout: true).trim()
+						--data-binary '@bom.json'", returnStdout: true).trim()
                     .tokenize("\n")
 
                     echo "HTTP response status code: $code"
