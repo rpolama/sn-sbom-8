@@ -2,9 +2,9 @@ def artifactname = "artifact_devops_${env.BUILD_NUMBER}.jar"
                    def packageartifactname = "artifact_devops_${env.BUILD_NUMBER}.jar"
 pipeline {
     agent any
-    tools {
-        maven 'Maven'
-    }
+    //tools {
+      //  maven 'Maven'
+    //}
     stages {
         stage("Build") {
             steps {
