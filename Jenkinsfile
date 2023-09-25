@@ -42,9 +42,9 @@ pipeline {
 		   echo object.result.status
 		   echo object.result.sysid
                 }
-							  }
          }
       }
+     }
 
       stage("Deploy") {
              steps{
